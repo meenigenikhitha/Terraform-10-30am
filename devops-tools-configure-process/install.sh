@@ -46,6 +46,8 @@ sudo mv /tmp/eksctl /usr/local/bin
 #------------------------create cluster--------------------------------
  eksctl create cluster --name my-eks-cluster --version 1.33 --region ap-south-1 --nodegroup-name standard-workers --node-type t2.medium --nodes 2 --nodes-min 1 --nodes-max 3 --managed
 aws eks update-cluster-version --name my-eks-cluster --kubernetes-version 1.33 --region ap-south-1
+eksctl delete cluster --name my-eks-cluster --region ap-south-1
+
 
 
 #----------------------Trivy install---------------
