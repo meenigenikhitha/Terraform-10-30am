@@ -43,6 +43,10 @@ sudo mv ./kubectl /usr/local/bin
 # -----------------------------eksctl install--------------------------------
 sudo curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
 sudo mv /tmp/eksctl /usr/local/bin
+#------------------------create cluster--------------------------------
+ eksctl create cluster --name my-eks-cluster --version 1.33 --region ap-south-1 --nodegroup-name standard-workers --node-type t2.medium --nodes 2 --nodes-min 1 --nodes-max 3 --managed
+aws eks update-cluster-version --name my-eks-cluster --kubernetes-version 1.33 --region ap-south-1
+
 
 #----------------------Trivy install---------------
 sudo rpm -ivh https://github.com/aquasecurity/trivy/releases/download/v0.48.3/trivy_0.48.3_Linux-64bit.rpm
